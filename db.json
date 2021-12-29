@@ -1,0 +1,134 @@
+{
+  "login": [
+    {
+      "sigid": "유수정",
+      "sigpw": "1234",
+      "login": false,
+      "id": 1
+    },
+    {
+      "sigid": "유수정",
+      "sigpw": "1234",
+      "login": false,
+      "id": 2
+    }
+  ],
+  "room": [
+    {
+      "roominfo": {
+        "roomname": "가",
+        "manager": {
+          "sigid": "유수정",
+          "id": 1
+        }
+      },
+      "id": 1,
+      "token": "dirvxre7onvpc7p0v5qs8"
+    },
+    {
+      "roominfo": {
+        "roomname": "나",
+        "manager": {
+          "sigid": "유수정",
+          "id": 1
+        }
+      },
+      "id": 2,
+      "token": "j585fdpvd0jh36b390l64m"
+    },
+    {
+      "roominfo": {
+        "roomname": "sk",
+        "manager": {
+          "sigid": "유수정",
+          "id": 2
+        }
+      },
+      "id": 3
+    },
+    {
+      "roominfo": {
+        "roomname": "fwe",
+        "manager": {
+          "sigid": "유수정",
+          "id": 2
+        }
+      },
+      "id": 4
+    }
+  ],
+  "user": [
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": true,
+      "roomId": "1",
+      "id": 1
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": false,
+      "roomId": "null",
+      "id": 2
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": true,
+      "roomId": "2",
+      "id": 3
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": false,
+      "roomId": "2",
+      "id": 4
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": false,
+      "roomId": "2",
+      "id": 5
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 1
+      },
+      "room_leader": false,
+      "roomId": "1",
+      "id": 6
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 2
+      },
+      "room_leader": true,
+      "roomId": "3",
+      "id": 7
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 2
+      },
+      "room_leader": true,
+      "roomId": "4",
+      "id": 8
+    }
+  ]
+}

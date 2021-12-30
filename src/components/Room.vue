@@ -18,13 +18,15 @@ export default {
     },
     data() {
         return {
-            users: []
+            users: [],
+            id: null
         }
     },
-    props: [
-        'id'
-    ],
+    // props: [
+    //     'id'
+    // ],
     created() {
+        this.id = this.$route.params.id
         this.$store.dispatch('setRoomName', this.id)
         this.$store.dispatch('setRoomUser', this.id)
         this.users = this.roomMembers

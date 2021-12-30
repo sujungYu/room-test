@@ -2,9 +2,9 @@
   <div>
       <i class="fas fa-plus-circle createroom" v-on:click="create"></i>
       <!-- <ul> -->
-          <li v-for="roomlist in roomlists" v-bind:key="roomlist.roominfo.roomname">
+          <li v-for="roomlist in roomlists" v-bind:key="roomlist.roomname">
             <router-link :to="/room/ + roomlist.id" tag="span" style="cursor: pointer">
-              {{roomlist.roominfo.roomname}}
+              {{roomlist.roomname}}
             </router-link>
           </li>
       <!-- </ul> -->
@@ -13,25 +13,33 @@
 </template>
 
 <script>
-import axios from "axios";
+// import axios from "axios";
 export default {
     data() {
         return {
-        roomlists: []
+        roomlists: [],
+        userid: ''
         }
     },
     created() {
-        axios.get(`${'http://localhost:8000/room'}`, {params: {userid: localStorage.getItem("user")}})
-        .then((res) => {
-          for(let i=0; i<res.data.length; i++) {
-              this.roomlists[i] = res.data[i]
-              console.log(i);
-          }
+        this.$store.commit('initData')
+        this.userid = JSON.parse(localStorage.getItem("user"))
+        this.$store.dispatch('checkRoom', this.userid)
+        this.roomlists = this.$store.state.userRooms
+        console.log(this.roomlists);
+        // location.replace()
+        // console.log(this.roomlists);
+    //     axios.get(`${'http://localhost:8000/room'}`, {params: {sigid: localStorage.getItem("user")}})
+    //     .then((res) => {
+    //       for(let i=0; i<res.data.length; i++) {
+    //           this.roomlists[i] = res.data[i]
+    //           console.log(i);
+    //       }
           
-          console.log(this.roomlists);
-      }).catch((error) => {
-          console.log(error);
-      })
+    //       console.log(this.roomlists);
+    //   }).catch((error) => {
+    //       console.log(error);
+    //   })
     },
     methods: {
         create() {

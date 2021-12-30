@@ -6,17 +6,23 @@ import router from '../router';
 Vue.use(Vuex);
 
 export const store = new Vuex.Store({
+    
     state: {
         siguser: null,
         roomId: null,
         roomTitle: '',
         roomMembers: [],
+        userRooms: [],
         Token: null,
         useToken: false,
         TokenId: null,
 
     },
     mutations: {
+        initData(state) {
+            state.roomMembers = []
+            state.userRooms = []
+        },
         setlogin(state, payload) {
             state.siguser = JSON.stringify(payload)
             router.push({name:'RoomHome', params: {id:payload.id}})
@@ -28,10 +34,16 @@ export const store = new Vuex.Store({
             state.roomTitle = payload
         },
         setMembers(state, payload) {
-            console.log(JSON.parse(JSON.stringify(payload))[0].user.sigid);
             for(let i=0; i<payload.length; i++) {
                 state.roomMembers.push(JSON.parse(JSON.stringify(payload))[i].user.sigid)
             }
+        },
+        setUserRoom(state, payload) {
+            state.userRooms.push({roomname: JSON.parse(JSON.stringify(payload))[0].roominfo.roomname, id: JSON.parse(JSON.stringify(payload))[0].id})
+            // console.log(state.userRooms);
+            // for(let i=0; i<payload.length; i++) {
+            //     state.userRooms.push(JSON.parse(JSON.stringify(payload))[i].roomname)
+            // }
         },
         setToken(state, payload) {
             state.Token = payload
@@ -55,12 +67,6 @@ export const store = new Vuex.Store({
                 localStorage.setItem("user", JSON.stringify({sigid: res.data.sigid, id: res.data.id}))
             })
         },
-        // checkmember({ commit }, payload) {
-        //     axios.get(`${'http://localhost:8000'}/room/${payload.roomId}/user`) {
-        //         if(res.data == payl)
-        //     }
-
-        // },
         member({ commit }, payload) {
              axios.post(`${'http://localhost:8000'}/room/${payload.roomId}/user`, 
             {
@@ -81,7 +87,8 @@ export const store = new Vuex.Store({
                 axios.get(`${'http://localhost:8000'}/room/${payload}`)
                 .then((res) => {
                     commit('setTitle', res.data.roominfo.roomname)
-                    console.log(res.data);
+                    commit('setRoomId',payload)
+                    console.log(res);
                     resolve(res)
                 }).catch((error) => {
                     reject(error)
@@ -99,8 +106,36 @@ export const store = new Vuex.Store({
             })
             })
         },
+        checkRoom({ dispatch }, payload) {
+            return new Promise((resolve, reject) => {
+                axios.get(`${'http://localhost:8000'}/user?user=${payload}`)
+                .then((res) => {
+                    for(let i=0; i<res.data.length; i++) {
+                        res.data[i] = res.data[i].roomId
+                    }
+                    dispatch('setRoom', res.data)
+                    resolve(res)
+                }).catch((error) => {
+                    reject(error)
+            })
+            })
+        },
+        setRoom({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                for(let i=0; i<payload.length; i++) {
+                    axios.get(`${'http://localhost:8000'}/room?id=${payload[i]}`)
+                    .then((res) => {
+                        commit('setUserRoom', res.data)
+                        resolve(res)
+                    }).catch((error) => {
+                        reject(error)
+                    })
+                }
+
+            })
+        },
+                
         inviteToken({ commit }, payload) {
-            console.log(this.getters.RoomId);
             axios.patch(`${'http://localhost:8000'}/room/${this.getters.RoomId}`, {token: payload})
            .then((res) => {
                commit('setToken', payload)
@@ -123,7 +158,6 @@ export const store = new Vuex.Store({
                 }
                 resolve(res);
             }).catch((error) => {
-                console.log(error)
                 reject(error)
             })
         })

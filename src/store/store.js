@@ -108,7 +108,7 @@ export const store = new Vuex.Store({
         },
         checkRoom({ dispatch }, payload) {
             return new Promise((resolve, reject) => {
-                axios.get(`${'http://localhost:8000'}/user?user=${payload}`)
+                axios.get(`${'http://localhost:8000'}/user?user.id=${payload}`)
                 .then((res) => {
                     for(let i=0; i<res.data.length; i++) {
                         res.data[i] = res.data[i].roomId

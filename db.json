@@ -5,6 +5,30 @@
       "sigpw": "1234",
       "login": false,
       "id": 1
+    },
+    {
+      "sigid": "유수정",
+      "sigpw": "1234",
+      "login": false,
+      "id": 2
+    },
+    {
+      "sigid": "유수정",
+      "sigpw": "1234",
+      "login": false,
+      "id": 3
+    },
+    {
+      "sigid": "김수현",
+      "sigpw": "1234",
+      "login": false,
+      "id": 4
+    },
+    {
+      "sigid": "유수정",
+      "sigpw": "1234",
+      "login": false,
+      "id": 5
     }
   ],
   "room": [
@@ -18,6 +42,27 @@
       },
       "id": 1,
       "token": "x5sl6jaupxdotvy7solot"
+    },
+    {
+      "roominfo": {
+        "roomname": "ㄴㅇㄹ",
+        "manager": {
+          "sigid": "김수현",
+          "id": 4
+        }
+      },
+      "id": 2
+    },
+    {
+      "roominfo": {
+        "roomname": "ㄹㅈㄷㄹ",
+        "manager": {
+          "sigid": "유수정",
+          "id": 5
+        }
+      },
+      "id": 3,
+      "token": "pgk5omjetwxgwqd42tisg"
     }
   ],
   "user": [
@@ -38,6 +83,24 @@
       "room_leader": false,
       "roomId": "1",
       "id": 2
+    },
+    {
+      "user": {
+        "sigid": "김수현",
+        "id": 4
+      },
+      "room_leader": true,
+      "roomId": "2",
+      "id": 3
+    },
+    {
+      "user": {
+        "sigid": "유수정",
+        "id": 5
+      },
+      "room_leader": true,
+      "roomId": "3",
+      "id": 4
     }
   ]
 }

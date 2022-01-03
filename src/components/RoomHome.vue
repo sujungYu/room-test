@@ -1,8 +1,7 @@
 <template>
   <div>
       <div class="top">
-          offco
-          <i class="fas fa-sign-out-alt out" v-on:click="out"></i>
+          offco<i class="fas fa-sign-out-alt out" v-on:click="out"></i>
       </div>
 
       <div class="back">
@@ -19,9 +18,9 @@
           <i class="fas fa-plus-circle createroom" v-on:click="create"></i>
       </div>
       <div class="bottom">
-          <i class="fas fa-user-circle"></i>
-          <i class="fas fa-list-alt"></i>
-          <i class="fas fa-ellipsis-h"></i>
+          <i class="fas fa-user-circle icon"></i>
+          <i class="fas fa-list-alt icon"></i>
+          <i class="fas fa-ellipsis-h icon"></i>
       </div>
   </div>
 </template>
@@ -109,15 +108,23 @@ li {
     text-align: center;
     padding-left: 3vw;
     /* margin-bottom: 1.6vh; */
-    position: relative; 
-    display: inline-block;
+    /* position: relative;  */
+    /* display: inline-block; */
 }
 .bottom {
+    margin: auto;
     width: 100vw;
     height: 9vh;
     background-color: rgb(255, 134, 94);
     font-size: 3em;
     color: white;
+    vertical-align : middle;
+    justify-content: space-around;
+    display: flex;
+    /* flex-flow: row; */
+    /* position: fixed; */
+    /* letter-spacing: 0.5px; */
+    /* padding: 2vh 3vw; */
     /* font-family: 'Kite One', sans-serif; */
     /* margin-bottom: 1.6vh;  */
 }
@@ -141,7 +148,7 @@ li {
     font-size: 3.5em;
     color: rgb(255, 134, 94);
     left: 32vw;
-    top: 27vh;
+    /* top: 27vh; */
     position: relative;
     /* justify-content: flex-end;
     display: inline-block; */
@@ -164,9 +171,12 @@ h1 {
     font-weight: lighter;
 }
 .out {
-    position: relative;
-    left: 20vw;
-    top: 1vh;
+    position: absolute;
+    left: 80vw;
+    top: 2vh;
+}
+.icon {
+    margin-top: 2vh;
 }
 
 </style>
